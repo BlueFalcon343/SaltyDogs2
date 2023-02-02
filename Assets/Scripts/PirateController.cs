@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PirateController : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public float speed = 3.0f;
-
-    public int maxHealth = 2000;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI healthText;
+    public int keyCount;
+    public int maxHealth = 200;
     int currentHealth;
-
+    private int score;
     Rigidbody2D rigidbody2d;
     float horizontal;
     float vertical;
@@ -19,8 +22,11 @@ public class PirateController : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-
+        score = 0;
+        keyCount = 0;
         currentHealth = maxHealth;
+        SetScoreText();
+        SetHealthText();
     }
 
     // Update is called once per frame
@@ -43,6 +49,14 @@ public class PirateController : MonoBehaviour
         }
     }
 
+    void SetScoreText()
+    {
+        scoreText.text = "Score: " + score.ToString();
+    }
+    void SetHealthText()
+    {
+        healthText.text = "Health: " + currentHealth.ToString();
+    }
     void FixedUpdate()
     {
         Vector2 position = rigidbody2d.position;
@@ -55,7 +69,11 @@ public class PirateController : MonoBehaviour
     public void ChangeHealth (int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log(currentHealth + "/" + maxHealth);
+        SetHealthText();
+        if(currentHealth <= 0)
+        {
+            dead();
+        }
     }
     void Launch()
     {
@@ -63,5 +81,19 @@ public class PirateController : MonoBehaviour
 
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, 600);
+    }
+    public void getKey(int amount)
+    {
+        keyCount = keyCount + amount;
+        Debug.Log(keyCount);
+    }
+    public void getScore(int amount)
+    {
+        score = score + amount;
+        SetScoreText();
+    }
+    void dead()
+    {
+
     }
 }

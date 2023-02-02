@@ -5,15 +5,19 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     bool alive = true;
-    public Transform player;
-    public float moveSpeed = 5f;
-    private Rigidbody2D rb;
-    private Vector2 movement;
+    private GameObject player;
+    private GameObject p;
+    private PirateController s;
 
+    [SerializeField]
+    public float speed = 2f;
+
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         rb = this.GetComponent<Rigidbody2D>();
         
     }
@@ -21,10 +25,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        direction.Normalize();
-        movement = direction;
+        Swarm();
         if(!alive)
         {
             return;
@@ -37,20 +38,21 @@ public class EnemyController : MonoBehaviour
         {
             return;
         }
-        moveCharacter(movement);
+        
     }
-    void moveCharacter(Vector2 direction)
+
+    private void Swarm()
     {
-        rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
+   
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        PirateController player = other.gameObject.GetComponent<PirateController>();
-
-        if(player != null)
+        PirateController character = other.gameObject.GetComponent<PirateController>();
+        if(character != null)
         {
-            player.ChangeHealth(-5);
+            character.ChangeHealth(-10);
             Destroy(gameObject);
         }
     }
@@ -58,6 +60,8 @@ public class EnemyController : MonoBehaviour
     public void death()
     {
         alive = false;
+        s = GameObject.Find("Pirate").GetComponent<PirateController>();
+        s.getScore(100);
         Destroy(gameObject);
     }
 }

@@ -27,13 +27,22 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        EnemyController e = other.collider.GetComponent<EnemyController>();
+        EnemyController e = other.gameObject.GetComponent<EnemyController>();
         if(e != null)
         {
             e.death();
         }
         //we also add a debug log to know what the projectile touch
         Debug.Log("Projectile Collision with " + other.gameObject);
+        Destroy(gameObject);
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        EnemySpawner s = other.gameObject.GetComponent<EnemySpawner>();
+        if (s != null)
+        {
+            s.hitCount();
+        }
         Destroy(gameObject);
     }
 }
