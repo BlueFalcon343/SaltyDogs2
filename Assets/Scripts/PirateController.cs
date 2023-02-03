@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Newtonsoft.Json.Linq;
+using UnityEngine.SceneManagement;
 
 
 public class PirateController : MonoBehaviour

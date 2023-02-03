@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelSwitch : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class LevelSwitch : MonoBehaviour
         if(pirate != null)
         {
             Debug.Log("step 2");
-            pirate.LevelTwo();
+            SceneManager.LoadScene("SecondLevelScene");
         }   
     }
 }
