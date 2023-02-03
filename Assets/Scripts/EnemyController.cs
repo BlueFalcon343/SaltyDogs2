@@ -8,6 +8,9 @@ public class EnemyController : MonoBehaviour
     private GameObject player;
     private GameObject p;
     private PirateController s;
+    private Vector2 movement;
+    
+    
 
     [SerializeField]
     public float speed = 2f;
@@ -25,6 +28,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
+
+
+
         Swarm();
         if(!alive)
         {
