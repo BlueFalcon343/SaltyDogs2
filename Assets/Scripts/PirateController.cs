@@ -46,7 +46,7 @@ public class PirateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         horizontal = Input.GetAxis("Horizontal");
+        horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
         Vector2 move = new Vector2(horizontal, vertical);
@@ -61,8 +61,8 @@ public class PirateController : MonoBehaviour
 
         }
        
-        animator.SetFloat("Look X", lookDirection.x);
-        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Move X", lookDirection.x);
+        animator.SetFloat("Move Y", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
 
 
