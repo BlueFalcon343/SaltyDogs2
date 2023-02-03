@@ -6,6 +6,7 @@ using TMPro;
 public class PirateController : MonoBehaviour
 {
     public GameObject projectilePrefab;
+    public GameObject LevelSwitch;
     public float speed = 3.0f;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
@@ -13,7 +14,7 @@ public class PirateController : MonoBehaviour
     public int maxHealth = 200;
     int currentHealth;
     private int score;
-    Rigidbody2D rigidbody2d;
+    public Rigidbody2D rigidbody2d;
     float horizontal;
     float vertical;
 
@@ -91,6 +92,11 @@ public class PirateController : MonoBehaviour
     {
         score = score + amount;
         SetScoreText();
+    }
+
+    public void LevelTwo()
+    {        
+        transform.position = new Vector2(70,-15);
     }
     void dead()
     {
