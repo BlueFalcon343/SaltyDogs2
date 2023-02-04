@@ -15,14 +15,19 @@ public class chestCollectable : MonoBehaviour
     {
         
     }
+
+    public AudioClip collectedClip;
     void OnTriggerEnter2D(Collider2D other)
     {
         PirateController controller = other.GetComponent<PirateController>();
-
+       
+        controller.PlaySound(collectedClip);
+        
         if (controller != null)
         {
             controller.getScore(500);
             Destroy(gameObject);
+            
         }
     }
 }

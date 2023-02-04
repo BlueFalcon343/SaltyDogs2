@@ -21,6 +21,7 @@ public class PirateController : MonoBehaviour
     float horizontal;
     float vertical;
     Animator animator;
+    AudioSource audioSource;
     
 
 
@@ -36,10 +37,15 @@ public class PirateController : MonoBehaviour
         SetScoreText();
         SetHealthText();
         animator = GetComponent<Animator>();
+
+        audioSource = GetComponent<AudioSource>();  
     }
 
     
-    
+    public void PlaySound (AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
 
 
 

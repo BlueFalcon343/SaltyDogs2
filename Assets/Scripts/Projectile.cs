@@ -25,6 +25,7 @@ public class Projectile : MonoBehaviour
         rigidbody2d.AddForce(direction * force);
     }
 
+    
     void OnCollisionEnter2D(Collision2D other)
     {
         EnemyController e = other.gameObject.GetComponent<EnemyController>();
@@ -37,6 +38,8 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
     void OnTriggerEnter2D(Collider2D other)
+
+        
     {
         EnemySpawner s = other.gameObject.GetComponent<EnemySpawner>();
         if (s != null)
