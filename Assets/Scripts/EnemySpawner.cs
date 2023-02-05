@@ -15,17 +15,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(spawnEnemy(swarmerInterval, swarmerPrefab));
-
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    
-    
 
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
@@ -41,7 +31,5 @@ public class EnemySpawner : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    
-
+    }    
 }

@@ -24,7 +24,6 @@ public class Projectile : MonoBehaviour
     {
         rigidbody2d.AddForce(direction * force);
     }
-
     
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -37,9 +36,9 @@ public class Projectile : MonoBehaviour
         Debug.Log("Projectile Collision with " + other.gameObject);
         Destroy(gameObject);
     }
-    void OnTriggerEnter2D(Collider2D other)
 
-        
+    void OnTriggerEnter2D(Collider2D other)
+                
     {
         EnemySpawner s = other.gameObject.GetComponent<EnemySpawner>();
         if (s != null)

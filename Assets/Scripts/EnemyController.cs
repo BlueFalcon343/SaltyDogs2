@@ -9,9 +9,7 @@ public class EnemyController : MonoBehaviour
     private GameObject p;
     private PirateController s;
     private Vector2 movement;
-    
-    
-
+        
     [SerializeField]
     public float speed = 2f;
 
@@ -21,18 +19,12 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        rb = this.GetComponent<Rigidbody2D>();
-        
+        rb = this.GetComponent<Rigidbody2D>();        
     }
 
     // Update is called once per frame
     void Update()
-    {
-        
-        
-
-
-
+    {        
         Swarm();
         if(!alive)
         {
@@ -45,8 +37,7 @@ public class EnemyController : MonoBehaviour
         if(!alive)
         {
             return;
-        }
-        
+        }        
     }
 
     private void Swarm()
@@ -54,7 +45,6 @@ public class EnemyController : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
    
-
     void OnCollisionEnter2D(Collision2D other)
     {
         PirateController character = other.gameObject.GetComponent<PirateController>();

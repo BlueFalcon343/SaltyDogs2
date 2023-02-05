@@ -21,11 +21,9 @@ public class PirateController : MonoBehaviour
     float horizontal;
     float vertical;
     Animator animator;
-    AudioSource audioSource;
-    
-
-
- Vector2 lookDirection = new Vector2(1, 0);
+    public AudioSource audioSource;
+  
+  Vector2 lookDirection = new Vector2(1, 0);
     // Start is called before the first frame update
     void Start()
     {
@@ -40,15 +38,11 @@ public class PirateController : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();  
     }
-
-    
+        
     public void PlaySound (AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
     }
-
-
-
 
     // Update is called once per frame
     void Update()
@@ -56,10 +50,7 @@ public class PirateController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        Vector2 move = new Vector2(horizontal, vertical);
-
-
-     
+        Vector2 move = new Vector2(horizontal, vertical);     
 
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
@@ -75,7 +66,10 @@ public class PirateController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Launch();
+            if(!PauseMenu.isPaused)
+            {
+                Launch();
+            }
         }
     }
 
@@ -123,12 +117,8 @@ public class PirateController : MonoBehaviour
         SetScoreText();
     }
 
-    public void LevelTwo()
-    {        
-        transform.position = new Vector2(70,-15);
-    }
     void dead()
     {
-
+        SceneManager.LoadScene("Lose");
     }
 }

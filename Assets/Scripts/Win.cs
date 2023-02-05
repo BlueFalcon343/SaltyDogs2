@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class chestCollectable : MonoBehaviour
-{
-   public AudioClip collectedClip;
-
+public class Win : MonoBehaviour
+{    
     void OnTriggerEnter2D(Collider2D other)
     {
         PirateController controller = other.GetComponent<PirateController>();
-                      
+
         if (controller != null)
         {
-            controller.PlaySound(collectedClip);
-            controller.getScore(500);
-            Destroy(gameObject);
+            SceneManager.LoadScene("Win");
         }
     }
 }

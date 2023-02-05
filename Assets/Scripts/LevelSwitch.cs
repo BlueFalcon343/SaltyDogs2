@@ -5,19 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelSwitch : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
+   void OnTriggerEnter2D(Collider2D other)
     {     
         Debug.Log("step 1");
         PirateController pirate = other.gameObject.GetComponent<PirateController>();

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1191514240954104297}
   - component: {fileID: 3430439679089376476}
   - component: {fileID: 3933107889772165441}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!61 &1191514240954104297
 BoxCollider2D:
   m_ObjectHideFlags: 0
