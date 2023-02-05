@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour
         PirateController character = other.gameObject.GetComponent<PirateController>();
         if(character != null)
         {
-            character.ChangeHealth(-10);
+            character.ChangeHealth(-10);            
             Destroy(gameObject);            
         }
     }

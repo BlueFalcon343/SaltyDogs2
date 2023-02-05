@@ -5,6 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Menus : MonoBehaviour
 {
+    public GameObject creditsScreen;
+    public GameObject controlsScreen;
+
+    private void Start()
+    {
+        creditsScreen.SetActive(false);
+        controlsScreen.SetActive(false);
+    }
+
     public void PlayGame()
     {
         TrackScore storage = gameObject.GetComponent<TrackScore>();
@@ -18,14 +27,24 @@ public class Menus : MonoBehaviour
         Application.Quit();
     }
 
+    public void OpenControls()
+    {
+        controlsScreen.SetActive(true);
+    }
+
     public void OpenCredits()
     {
-        SceneManager.LoadScene("Credits");
+        creditsScreen.SetActive(true);
+    }
+
+    public void ReturnToMenu()
+    {
+        creditsScreen.SetActive(false);
+        controlsScreen.SetActive(false);
     }
 
     public void MainMenu()
     {
         SceneManager.LoadScene("Title");
-    }
-
+    }    
 }

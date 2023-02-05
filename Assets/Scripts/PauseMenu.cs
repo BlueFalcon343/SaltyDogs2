@@ -21,9 +21,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("hi");
-
+        {           
             if (isPaused)
             {
                 ResumeGame();
@@ -42,8 +40,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
 
         PirateController controller = GetComponent<PirateController>();
-        audioSource.Pause();
-        
+        audioSource.Pause();        
     }
 
     void ResumeGame()
@@ -52,8 +49,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
 
-        audioSource.Play(0);
-        
+        audioSource.Play(0);        
     }
 
     public void MainMenu()
