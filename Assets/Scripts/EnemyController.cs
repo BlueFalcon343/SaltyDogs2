@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
         if(character != null)
         {
             character.ChangeHealth(-10);
-            Destroy(gameObject);
+            Destroy(gameObject);            
         }
     }
 

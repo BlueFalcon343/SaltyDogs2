@@ -14,7 +14,7 @@ public class PirateController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
     public int keyCount;
-    public int maxHealth = 200;
+    public int maxHealth;
     int currentHealth;
     private int score;
     public Rigidbody2D rigidbody2d;
@@ -24,14 +24,14 @@ public class PirateController : MonoBehaviour
     public AudioSource audioSource;
   
   Vector2 lookDirection = new Vector2(1, 0);
+
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {        
         rigidbody2d = GetComponent<Rigidbody2D>();
-        score = 0;
+        score = TrackScore.totalScore;
         keyCount = 0;
-        currentHealth = maxHealth;
+        currentHealth = TrackScore.totalHealth;
         SetScoreText();
         SetHealthText();
         animator = GetComponent<Animator>();
@@ -76,10 +76,12 @@ public class PirateController : MonoBehaviour
     void SetScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
+        TrackScore.totalScore = score;
     }
     void SetHealthText()
     {
         healthText.text = "Health: " + currentHealth.ToString();
+        TrackScore.totalHealth = currentHealth;
     }
     void FixedUpdate()
     {
@@ -94,7 +96,8 @@ public class PirateController : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         SetHealthText();
-        if(currentHealth <= 0)
+
+        if (currentHealth <= 0)
         {
             dead();
         }

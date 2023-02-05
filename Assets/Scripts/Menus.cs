@@ -7,6 +7,9 @@ public class Menus : MonoBehaviour
 {
     public void PlayGame()
     {
+        TrackScore storage = gameObject.GetComponent<TrackScore>();
+        TrackScore.totalHealth = 100;
+        TrackScore.totalScore = 0;
         SceneManager.LoadScene("MainScene");
     }
 

@@ -108,6 +108,7 @@ MonoBehaviour:
   keyCount: 0
   maxHealth: 100
   rigidbody2d: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &2488814385206735910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!50 &6107027066096099772
 Rigidbody2D:
   serializedVersion: 4
